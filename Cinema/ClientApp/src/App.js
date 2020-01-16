@@ -1,14 +1,28 @@
-﻿import React from 'react';
-import { Route } from 'react-router';
-import Layout from './components/Layout';
+import React from 'react';
+import { Switch, Route } from "react-router-dom";
 import Home from './components/Home';
-import Counter from './components/Counter';
-import FetchData from './components/FetchData';
+import Layout from './components/Layout';
+import LoginPage from './components/Login/LoginPage';
+import registration from './components/Registration/registration';
+import Application from './components/demo/Application'
+import { Helmet } from 'react-helmet';
+function App() {
+  return (
 
-export default () => (
-  <Layout>
-    <Route exact path='/' component={Home} />
-    <Route path='/counter' component={Counter} />
-    <Route path='/fetchdata/:startDateIndex?' component={FetchData} />
-  </Layout>
-);
+    <Layout>
+      <Helmet>
+        <style>{'body {background: -webkit-linear-gradient(right, #000000,#1d3655); }'}</style>
+      </Helmet>
+      <Switch>
+        <Route exact path='/' component={Home} />
+        <Route exact path='/login' component={LoginPage} />
+        <Route exact path='/Application' component={Application} />
+        <Route exact path='/registration' component={registration} />
+
+      </Switch>
+    </Layout>
+
+  );
+}
+
+export default App;
